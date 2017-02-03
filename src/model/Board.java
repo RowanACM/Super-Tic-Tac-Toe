@@ -7,7 +7,7 @@ import controller.Input;
  */
 public class Board implements Model {
 
-    private boolean debug = true;
+    private boolean debug = false;
 
     private MiniBoard[][] boards;
     private int lastClick;
