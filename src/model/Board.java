@@ -28,7 +28,7 @@ public class Board implements Model {
                 winners[i][j] = boards[i][j].getWinner();
                 values[i][j] = boards[i][j].getValues();
             }
-        return new Data(values, winners, lastClick);
+        return new Data(values, winners, lastClick, checkWin(winners));
     }
 
     public void update(Input input, boolean turnX) {
@@ -48,6 +48,24 @@ public class Board implements Model {
                 lastClick = 3 * i + j;
         else
             lastClick = 9;
+    }
+
+    private int checkWin(int[][] winners) {
+        for(int i = 0; i < 3; i++)
+            // Check Rows
+            if (winners[i][0] == winners[i][1] && winners[i][1] == winners[i][2])
+                if(winners[i][0] != 0)
+                    return winners[i][0];
+        for(int i = 0; i < 3; i++)
+            // Check Columns
+            if (winners[0][i] == winners[1][i] && winners[1][i] == winners[2][i])
+                if(winners[0][i] != 0)
+                    return winners[0][i];
+        // Check Diagonals
+        if ((winners[0][0] == winners[1][1] && winners[1][1] == winners[2][2]) || (winners[0][2] == winners[1][1] && winners[1][1] == winners[2][0]))
+            if(winners[1][1] != 0)
+                return winners[1][1];
+        return 0;
     }
 
 }

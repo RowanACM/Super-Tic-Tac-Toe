@@ -23,7 +23,7 @@ public class Controller {
         Data data = model.getData();
 
         while(!gameWin) {
-            view.display(data);
+            view.display(data, false);
 
             // Get input from proper sources
             Input input = null;
@@ -49,6 +49,7 @@ public class Controller {
             toggleTurnPlayer();
         }
 
+        view.display(data, true);
         endGame(data);
 
     }

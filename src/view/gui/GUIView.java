@@ -69,7 +69,7 @@ public class GUIView extends JFrame implements View {
         throw new NoInputException();
     }
 
-    public void display(Data data) {
+    public void display(Data data, boolean end) {
         int openBoard = data.openBoard();
         for(int i = 0; i < 3; i++)
             for(int j = 0; j < 3; j++) {
@@ -77,7 +77,7 @@ public class GUIView extends JFrame implements View {
                 if(p.isComplete())
                     panels[i][j].setCompleted(p.getSubWinner());
                 else {
-                    if(openBoard != 9 && openBoard != (3 * i) + j)
+                    if(end || openBoard != 9 && openBoard != (3 * i) + j)
                         panels[i][j].enableBoard(false);
                     else
                         panels[i][j].enableBoard(true);

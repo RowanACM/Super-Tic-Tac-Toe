@@ -8,7 +8,7 @@ import controller.Data;
  */
 public interface View {
 
-    void display(Data data);
+    void display(Data data, boolean end);
 
     Input getInput() throws NoInputException;
 

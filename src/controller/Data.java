@@ -12,8 +12,8 @@ public class Data {
 
     private int openBoard;
 
-    public Data(int[][][][] miniBoards, int[][] winners, int openBoard) {
-        winner = 0;
+    public Data(int[][][][] miniBoards, int[][] winners, int openBoard, int winner) {
+        this.winner = winner;
         subBoards = miniBoards;
         subBoardWinners = winners;
         this.openBoard = openBoard;
