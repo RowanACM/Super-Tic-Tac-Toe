@@ -54,23 +54,24 @@ class MiniBoard {
     }
 
     protected void checkWin() {
+        Player subWinner = Player.NONE;
         for(int i = 0; i < 3; i++)
             // Check Rows
             if (moves[i][0] == moves[i][1] && moves[i][1] == moves[i][2])
-                setWinner(moves[i][0]);
+                if(moves[i][0] != Player.NONE)
+                    setWinner(moves[i][0]);
         for(int i = 0; i < 3; i++)
             // Check Columns
             if (moves[0][i] == moves[1][i] && moves[1][i] == moves[2][i])
-                setWinner(moves[0][i]);
+                if(moves[0][i] != Player.NONE)
+                    setWinner(moves[0][i]);
         // Check Diagonals
-        if (moves[0][0] == moves[1][1] && moves[1][1] == moves[2][2])
-            setWinner(moves[0][0]);
-        if (moves[0][2] == moves[1][1] && moves[1][1] == moves[2][0])
-            setWinner(moves[0][2]);
+        if ((moves[0][0] == moves[1][1] && moves[1][1] == moves[2][2]) || (moves[0][2] == moves[1][1] && moves[1][1] == moves[2][0]))
+            if(moves[1][1] != Player.NONE)
+                setWinner(moves[1][1]);
 
-        if(winner == null && moveCount == 9)
+        if(winner == Player.NONE && moveCount == 9)
             setWinner(Player.TIE);
-        System.out.println(winner);
     }
 
 }
