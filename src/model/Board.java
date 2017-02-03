@@ -7,6 +7,8 @@ import controller.Input;
  */
 public class Board implements Model {
 
+    private boolean debug = true;
+
     private MiniBoard[][] boards;
     private int lastClick;
 
@@ -39,11 +41,13 @@ public class Board implements Model {
 
         boards[x][y].update(i, j, turnX ? 1 : 2);
 
-        if(boards[i][j].getWinner() > 0)
-            lastClick = 9;
+        if(!debug)
+            if(boards[i][j].getWinner() > 0)
+                lastClick = 9;
+            else
+                lastClick = 3 * i + j;
         else
-            lastClick = 3 * i + j;
-        System.out.println(i + ", " + j + ", " + lastClick);
+            lastClick = 9;
     }
 
 }

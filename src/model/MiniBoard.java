@@ -54,14 +54,14 @@ class MiniBoard {
     }
 
     protected void checkWin() {
-        for(int i = 0; i < 3; i++) {
+        for(int i = 0; i < 3; i++)
             // Check Rows
             if (moves[i][0] == moves[i][1] && moves[i][1] == moves[i][2])
                 setWinner(moves[i][0]);
+        for(int i = 0; i < 3; i++)
             // Check Columns
             if (moves[0][i] == moves[1][i] && moves[1][i] == moves[2][i])
                 setWinner(moves[0][i]);
-        }
         // Check Diagonals
         if (moves[0][0] == moves[1][1] && moves[1][1] == moves[2][2])
             setWinner(moves[0][0]);
@@ -70,6 +70,7 @@ class MiniBoard {
 
         if(winner == null && moveCount == 9)
             setWinner(Player.TIE);
+        System.out.println(winner);
     }
 
 }
